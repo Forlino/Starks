@@ -178,15 +178,15 @@ def mostrar_menu_informes():
     print("J. Superhéroes agrupados por tipo de inteligencia")
     print("Q. Salir")
 
-def main():
+def main(lista_heroes):
     while True:
         mostrar_menu_informes()
         opcion = input("Seleccione una opción (A/B/C/D/E/F/G/H/I/J/Q): ")
 
         if opcion == "A" or opcion == "a":
-            imprimir_nombre_genero_NB(lista_personajes)
+            imprimir_nombre_genero_NB(lista_heroes)
         elif opcion == "B" or opcion == "b":
-            superheroe_alto_F = superheroe_mas_alto_genero(lista_personajes,"F")
+            superheroe_alto_F = superheroe_mas_alto_genero(lista_heroes,"F")
             print("Superhéroe más alto de género F:")
             if superheroe_alto_F:
                 print("Nombre:", superheroe_alto_F["nombre"])
@@ -194,7 +194,7 @@ def main():
             else:
                 print("No se encontró ningún superhéroe de género F.")
         elif opcion == "C" or opcion == "c":
-            superheroe_alto_M = superheroe_mas_alto_genero(lista_personajes,"M")
+            superheroe_alto_M = superheroe_mas_alto_genero(lista_heroes,"M")
             print("Superhéroe más alto de género M:")
             if superheroe_alto_M:
                 print("Nombre:", superheroe_alto_M["nombre"])
@@ -202,7 +202,7 @@ def main():
             else:
                 print("No se encontró ningún superhéroe de género M.")
         elif opcion == "D" or opcion == "d":
-            superheroe_debil_M = determinar_superheroe_mas_debil(lista_personajes,"M")
+            superheroe_debil_M = determinar_superheroe_mas_debil(lista_heroes,"M")
             print("Superhéroe más débil de género M:")
             if superheroe_debil_M:
                 print("Nombre:", superheroe_debil_M["nombre"])
@@ -210,7 +210,7 @@ def main():
             else:
                 print("No se encontró ningún superhéroe de género M.")
         elif opcion == "E" or opcion == "e":
-            superheroe_debil_NB = determinar_superheroe_mas_debil(lista_personajes,"NB")
+            superheroe_debil_NB = determinar_superheroe_mas_debil(lista_heroes,"NB")
             print("Superhéroe más débil de género NB:")
             if superheroe_debil_NB:
                 print("Nombre:", superheroe_debil_NB["nombre"])
@@ -218,27 +218,27 @@ def main():
             else:
                 print("No se encontró ningún superhéroe de género NB.")
         elif opcion == "F" or opcion == "f":
-            fuerza_promedio_NB = fuerza_promedio_genero_NB(lista_personajes)
+            fuerza_promedio_NB = fuerza_promedio_genero_NB(lista_heroes)
             print(f"Fuerza promedio de superhéroes de género NB: {fuerza_promedio_NB:.2f}")
         elif opcion == "G" or opcion == "g":
-            conteo_color_ojos = contar_por_atributo(lista_personajes, "color_ojos")
+            conteo_color_ojos = contar_por_atributo(lista_heroes, "color_ojos")
             print("Cantidad de superhéroes por color de ojos:")
             for color_ojos, cantidad in conteo_color_ojos.items():
                 print(f"{color_ojos}: {cantidad}")
         elif opcion == "H" or opcion == "h":
-            conteo_color_pelo = contar_por_atributo(lista_personajes, "color_pelo")
+            conteo_color_pelo = contar_por_atributo(lista_heroes, "color_pelo")
             print("Cantidad de superhéroes por color de pelo:")
             for color_pelo, cantidad in conteo_color_pelo.items():
                 print(f"{color_pelo}: {cantidad}")
         elif opcion == "I" or opcion == "i":
-            superheroes_agrupados_color_ojos = agrupar_por_atributo(lista_personajes, "color_ojos")
+            superheroes_agrupados_color_ojos = agrupar_por_atributo(lista_heroes, "color_ojos")
             print("Superhéroes agrupados por color de ojos:")
             for color_ojos, superheroes in superheroes_agrupados_color_ojos.items():
                 print(f"\nColor de ojos: {color_ojos}")
                 for superheroe in superheroes:
                     print(f"  Nombre: {superheroe['nombre']}")
         elif opcion == "J" or opcion == "j":
-            superheroes_agrupados_inteligencia = agrupar_por_atributo(lista_personajes, "inteligencia")
+            superheroes_agrupados_inteligencia = agrupar_por_atributo(lista_heroes, "inteligencia")
             print("Superhéroes agrupados por tipo de inteligencia:")
             for inteligencia, superheroes in superheroes_agrupados_inteligencia.items():
                 print(f"\nTipo de inteligencia: {inteligencia}")
@@ -248,6 +248,4 @@ def main():
             break
         else:
             print("Opción no válida. Intente nuevamente.")
-
-if __name__ == "__main__":
-    main()
+main(lista_personajes)
