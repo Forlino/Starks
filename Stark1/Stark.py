@@ -156,25 +156,24 @@ def mostrar_menu():
     print("E. Mostrar nombre y peso de los superhéroes cuya fuerza supere la fuerza promedio de las superhéroes femeninas")
     print("Q. Salir")
 
-def main():
+def main(lista_heroes):
     while True:
         mostrar_menu()
         opcion = input("Seleccione una opción (A/B/C/D/E/Q): ")
 
         if opcion == "A" or opcion == "a":
-            mostrar_datos_lista_heroes()
+            mostrar_datos_lista_heroes(lista_heroes)
         elif opcion == "B" or opcion == "b":
-            mostrar_heroe_mayor_fuerza()
+            mostrar_heroe_mayor_fuerza(lista_heroes)
         elif opcion == "C" or opcion == "c":
-            mostrar_heroe_mas_bajo()
+            mostrar_heroe_mas_bajo(lista_heroes)
         elif opcion == "D" or opcion == "d":
-            mostrar_promedio_peso_masculino()
+            mostrar_promedio_peso_masculino(lista_heroes)
         elif opcion == "E" or opcion == "e":
-            mostrar_promedio_superior_a_femeninas()
+            mostrar_promedio_superior_a_femeninas(lista_heroes)
         elif opcion == "Q" or opcion == "q":
             break
         else:
             print("Opción no válida. Intente nuevamente.")
 
-if __name__ == "__main__":
-    main()
+main(lista_personajes)
